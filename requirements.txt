@@ -1,0 +1,4 @@
+requests
+pyti
+plotly
+pandas
