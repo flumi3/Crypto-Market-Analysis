@@ -1,11 +1,35 @@
 class Strategies:
+    """
+    This class contains all strategies that will be used for performing the backtest.
+    """
 
     @staticmethod
-    def moving_average_strategy(candlestick_df, quantity):
+    def moving_average_strategy(candlestick_df, quantity=1):
         """
-        If the price is 3% below the slow simple moving average, we will buy.
-        If the price is 2% above the buying price, we will sell.
+        Moving average strategy.
+
+        This strategy includes the usage of 2 simple moving average: A fast moving average which will follow the price
+        closely and a slow moving average which follows the ups and downs of the course not as closely.
+
+        The strategy is defined by the following conditions:
+            - If the price is 3% below the slow simple moving average, we will buy.
+            - If the price is 2% above the buying price, we will sell.
+
+        It creates two lists that will hold our buy and sell signals. Then, it will go through all of the data within
+        the passed candlestick data frame and check for every entry whether our buy condition is met. If so, it will
+        place a buy signal containing the buying price, the desired selling price and the exact moment in which the coin
+        would have been bought. After collecting the buy signals we will go a second time through all of the market data
+        in the data frame looking for potential selling points of our bought coins.
+
+        Parameter:
+            - candlestick_df: DataFrame - The candlestick market data we will perform the strategy on
+            - quantity: int - The number of coins we will buy when our buy condition is met
+
+        Return:
+            - buy_signals: list - List of buy signals
+            - sell_signals: list - List of sell signals
         """
+
         df = candlestick_df
         buy_signals = list()  # List that contains information on the buying point (time and buying price)
         sell_signals = list()  # List that contains information on the selling point (time and buying price)
