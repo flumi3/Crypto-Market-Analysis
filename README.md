@@ -2,7 +2,7 @@
 
 This is a little project for some friends information technology course in university.
 
-It accesses historical cryptocurrency market data from the Binance API, processeses it and then executes a little backtest on a simple trading strategy.
+It accesses historical cryptocurrency market data from the Binance API, processes it and then executes a little backtest on a simple trading strategy.
 
 
 
