@@ -7,7 +7,6 @@ from binance import BinanceOperations
 from strategies import Strategies
 
 
-# This class holds all the properties and methods needed for the trading bot
 class TradingModel:
     """
     This class represents the trading model. It is able for processing the accessed market data as well as plotting and
@@ -18,7 +17,6 @@ class TradingModel:
     def __init__(self, symbol):
         self.symbol = symbol
 
-    # This method processes the candlestick data
     @staticmethod
     def process_data(candlestick_data):
         """
@@ -64,7 +62,6 @@ class TradingModel:
         # Return result
         return df
 
-    # This method visualizes the candlestick data in form of a candlestick chart
     def plot_data(self, candlestick_df, buy_signals, sell_signals):
         """
         Plots the candlestick data as html chart.
@@ -148,7 +145,6 @@ class TradingModel:
         figure = go.Figure(data=data, layout=layout)
         plot(figure, filename=self.symbol + ".html")
 
-    # This method backtests the strategy
     def backtest_strategy(self, buy_signals, sell_signals):
         """
         Performs a backtest on passed buy and sell signals to see whether the strategy would have been successful.
@@ -213,7 +209,6 @@ class TradingModel:
 
         print(f"Profit: {round(profit, 2)}€")
 
-    # This method executes the actual operations of the bot
     def run_moving_average_strategy(self):
         """
         This method will run the moving average strategy.
